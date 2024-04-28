@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->foreignIdFor(Fisherman::class)->constrained();
         });
-    }
+    } //DELETE IF NOT NEEDED
 
     /**
      * Reverse the migrations.

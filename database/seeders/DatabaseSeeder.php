@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
             FisherySeeder::class,
             FishSeeder::class,
             HaulSeeder::class,
-            LoginSeeder::class
+            UserSeeder::class,
         ]);
     }
 }

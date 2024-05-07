@@ -12,13 +12,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('logins', function (Blueprint $table) {
-            $table->id();
+        Schema::table('users', function (Blueprint $table) {
             $table->foreignIdFor(Fisherman::class)->constrained();
-            $table->string('login');
-            $table->string('password');
-            $table->string('type');
-            $table->timestamps();
         });
     }
 
@@ -27,6 +22,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('logins');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropForeign('users_fisherman_foreign');
+            $table->dropColumn('fisherman_id');
+        });
     }
 };

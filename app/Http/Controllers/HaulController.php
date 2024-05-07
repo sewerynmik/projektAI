@@ -12,7 +12,8 @@ class HaulController extends Controller
     {
         //DB::enableQueryLog();
 
-        $hauls = Haul::all();
+        //$hauls = Haul::all();
+        $hauls = Haul::with('fisherman', 'fish', 'fishery')->get();
 
         //$queries = DB::getQueryLog();
         //dd($queries);

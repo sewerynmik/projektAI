@@ -16,10 +16,11 @@
           <li class="nav-item">
             <a class="nav-link {{ Request::is('fishery') ? 'active' : '' }}" href="{{ url('fishery') }}">Łowiska</a>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item">
             <a class="nav-link {{ Request::is('haul') ? 'active' : '' }}" href="{{ url('haul') }}">Połowy</a>
           </li>
         </ul>
-      </div>
+        <a class="btn btn-success ms-auto " href="{{ Route('login') }}">Log In</a>
+    </div>
     </div>
   </nav>

@@ -1,42 +1,34 @@
-<?php
+﻿<?php
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class LoginController extends Controller
+class UserController extends Controller
 {
-    public function login()
-    {
-        if (Auth::check()) {
+    public function login(){
+        if (Auth::check()){
             return redirect()->route('fish.index');
         }
         return view('login.index');
     }
 
-    /**
-     * Handle an authentication attempt.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function authenticate(Request $request)
     {
         $credentials = $request->validate([
-            'login' => ['required'],
-            'password' => ['required'],
+            'name' => ['required'],
+            'password' => ['required']
         ]);
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->route('fish.index');
+            return redirect()->route('login.index');
         }
 
         return back()->withErrors([
-            'login' => 'The provided credentials do not match our records.',
-        ])->onlyInput('login');
+            'email' => 'The provided credentials do not match our records.',
+        ])->onlyInput('name');
     }
 
     public function logout(Request $request)

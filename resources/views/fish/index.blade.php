@@ -18,6 +18,7 @@
                 <th scope="col">Gatunek</th>
                 <th scope="col">Opis</th>
                 <th scope="col">Zdjęcie</th>
+                <th scope="col"></th>
                 @can('is-admin')
                     <th scope="col"></th>
                     <th scope="col"></th>
@@ -32,6 +33,7 @@
                     <td>{{ $fish->species }}</td>
                     <td>{{ $fish->description }}</td>
                     <td>{{ $fish->image }}</td>
+                    <td><a href="{{ route('fish.show', $fish->id) }}" class="btn btn-dark">Zobacz</a></td>
                     @can('is-admin')
                         <td><a href="{{route('fish.edit', $fish->id)}}" class="btn btn-primary">Edycja</a></td>
                         <td><a href="{{route('fish.destroy', $fish->id)}}" class="btn btn-danger">Usuń</a></td>

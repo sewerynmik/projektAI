@@ -13,6 +13,12 @@ Route::get('/', function () {
 
 Route::controller(FishController::class)->group(function () {
     Route::get('/fish', 'index')->name('fish.index');
+    Route::get('/fish/create', 'create')->name('fish.create');
+    Route::post('/fish/{id}', 'show')->name('fish.show');
+    Route::get('/fish/{id}/edit', 'edit')->name('fish.edit');
+    Route::put('/fish/{id}', 'update')->name('fish.update');
+    Route::delete('/fish/{id}', 'destroy')->name('fish.destroy');
+
 });
 
 Route::controller(FisheryController::class)->group(function () {

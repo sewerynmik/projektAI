@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\User;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Gate;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,5 +28,9 @@ class AppServiceProvider extends ServiceProvider
                 $middleware->disableFor('XSRF-TOKEN');
             });
         }
+
+        Gate::define('is-admin', function (User $user) {
+            return $user->isAdmin();
+        });
     }
 }

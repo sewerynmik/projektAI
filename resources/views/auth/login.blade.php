@@ -10,9 +10,9 @@
             <form method="POST" action="{{ route('login.authenticate') }}" class="needs-validation" novalidate>
                 @csrf
                 <div class="form-group mb-2">
-                    <label for="login" class="form-label">Login</label>
-                    <input id="login" name="login" type="text" class="form-control @if ($errors->first('login')) is-invalid @endif" value="{{ old('login') }}">
-                    <div class="invalid-feedback">Nieprawidłowy login!</div>
+                    <label for="email" class="form-label">Email</label>
+                    <input id="email" name="email" type="text" class="form-control @if ($errors->first('email')) is-invalid @endif" value="{{ old('email') }}">
+                    <div class="invalid-feedback">Nieprawidłowy email!</div>
                 </div>
                 <div class="form-group mb-2">
                     <label for="continent" class="form-label">Hasło</label>

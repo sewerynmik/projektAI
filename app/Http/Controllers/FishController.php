@@ -46,4 +46,10 @@ class FishController extends Controller
         $fish->update($input);
         return redirect()->route('fish.index');
     }
+
+    public function destroy($id){
+        $fish = Fish::findORFail($id);
+        $fish->delete();
+        return redirect()->route('fish.index');
+    }
 }

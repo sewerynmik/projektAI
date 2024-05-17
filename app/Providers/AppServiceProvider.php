@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Haul;
 use App\Models\User;
+use App\Policies\HaulPolicy;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Gate;
@@ -32,5 +34,7 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('is-admin', function (User $user) {
             return $user->isAdmin();
         });
+
+        Gate::policy(Haul::class, HaulPolicy::class);
     }
 }

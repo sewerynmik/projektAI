@@ -16,4 +16,9 @@ class Fish extends Model
     {
         return $this->hasMany(Haul::class);
     }
+
+    public function relatedRecordsExist(): bool
+    {
+        return $this->hauls()->exists();
+    }
 }

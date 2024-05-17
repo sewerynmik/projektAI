@@ -19,6 +19,10 @@
                         <th scope="col">Wiek</th>
                         <th scope="col">Email</th>
                         <th scope="col">Adres</th>
+                        @can('is-admin')
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        @endcan
                     </tr>
                 </thead>
                 <tbody>
@@ -30,6 +34,10 @@
                             <td>{{ $fisherman->age }}</td>
                             <td>{{ $fisherman->email }}</td>
                             <td>{{ $fisherman->address }}</td>
+                            @can('is-admin')
+                                <td><a href="{{ route('fisherman.edit', $fisherman->id) }}" class="btn btn-primary">Edytuj</a></td>
+                                <td><a href="{{ route('fisherman.destroy', $fisherman->id) }}" class="btn btn-danger">Usuń</a></td>
+                            @endcan
                         </tr>
                     @empty
                         <tr>

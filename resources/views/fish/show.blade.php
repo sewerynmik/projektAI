@@ -30,7 +30,11 @@
                 @can('is-admin')
                     <div class="card-footer d-flex justify-content-around">
                         <a href="{{ route('fish.edit', $fish->id) }}" class="btn btn-primary">Edytuj</a>
-                        <a href="{{ route('fish.destroy', $fish->id) }}" class="btn btn-danger">Usuń</a>
+                        <form method="POST" action="{{ route('fish.destroy', $fish->id) }}">
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" class="btn btn-danger" value="Usuń">
+                        </form>
                     </div>
                 @endcan
             </div>

@@ -18,6 +18,10 @@
                         <th scope="col">Ryba</th>
                         <th scope="col">Łowisko</th>
                         <th scope="col">Data</th>
+                        @can('is-admin')
+                            <td scope="col"></td>
+                            <td scope="col"></td>
+                        @endcan
                     </tr>
                 </thead>
                 <tbody>
@@ -28,6 +32,10 @@
                             <td>{{ $haul->fish->name }}</td>
                             <td>{{ $haul->fishery->name }}</td>
                             <td>{{ $haul->data }}</td>
+                            @can('is-admin')
+                                <td><a href="{{ route('haul.edit', $haul->id) }}" class="btn btn-primary">Edytuj</a></td>
+                                <td><a href="{{ route('haul.destroy', $haul->id) }}" class="btn btn-danger">Usuń</a></td>
+                            @endcan
                         </tr>
                     @empty
                         <tr>

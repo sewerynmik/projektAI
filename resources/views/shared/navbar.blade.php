@@ -26,17 +26,19 @@
                         <a class="nav-link {{ Request::is('haul') ? 'active' : '' }}"
                            href="{{ url('haul') }}">Połowy</a>
                     </li>
-                    <li>
-                        <a class="nav-link {{ Request::is('user') ? 'active' : '' }}"
-                           href="{{ url('user') }}">Profil</a>
-                    </li>
+                @endif
+                <li>
+                    <a class="nav-link {{ Request::is('profile') ? 'active' : '' }}"
+                       href="{{ url('profile') }}">Profil</a>
+                </li>
+
+            @if(Auth::check())
+                <a class="btn btn-success ms-auto " href="{{ Route('logout') }}">Log Out</a>
             </ul>
+                @else
+                    </ul>
 
-            <a class="btn btn-success ms-auto " href="{{ Route('logout') }}">Log Out</a>
-            @else
-                </ul>
-
-            <a class="btn btn-success ms-auto " href="{{ Route('login') }}">Log In</a>
+                <a class="btn btn-success ms-auto " href="{{ Route('login') }}">Log In</a>
             @endif
         </div>
     </div>

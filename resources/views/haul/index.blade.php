@@ -34,7 +34,13 @@
                             <td>{{ $haul->data }}</td>
                             @can('is-admin')
                                 <td><a href="{{ route('haul.edit', $haul->id) }}" class="btn btn-primary">Edytuj</a></td>
-                                <td><a href="{{ route('haul.destroy', $haul->id) }}" class="btn btn-danger">Usuń</a></td>
+                                <td>
+                                    <form method="POST" action="{{ route('haul.destroy', $haul->id) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input type="submit" class="btn btn-danger" value="Usuń">
+                                    </form>
+                                </td>
                             @endcan
                         </tr>
                     @empty

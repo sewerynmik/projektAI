@@ -2,7 +2,6 @@
 
 @include('shared.head', ['pageTitle' => 'Ryby'])
 
-<body>
 @include('shared.navbar')
 
 <div class="btn-group">
@@ -109,4 +108,6 @@
         });
     </script>
 @endif
-</body>
+
+
+@include('shared.footer')

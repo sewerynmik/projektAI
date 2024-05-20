@@ -60,7 +60,6 @@ class FishController extends Controller
 
     public function store(Request $request)
     {
-        // Walidacja danych wejściowych
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'species' => 'required|string|max:255',
@@ -68,17 +67,14 @@ class FishController extends Controller
             'image' => 'nullable|string',
         ]);
 
-        // Utwórz nowy obiekt ryby na podstawie danych wejściowych
         $fish = new Fish();
         $fish->name = $validatedData['name'];
         $fish->species = $validatedData['species'];
         $fish->description = $validatedData['description'];
-        $fish->image = $validatedData['image']; // Możesz dodać logikę przetwarzania obrazów, jeśli jest to wymagane
+        $fish->image = $validatedData['image'];
 
-        // Zapisz rybę do bazy danych
         $fish->save();
 
-        // Przekieruj użytkownika gdziekolwiek chcesz, np. do listy wszystkich ryb
         return redirect()->route('fish.index')->with('success', 'Ryba została pomyślnie dodana.');
     }
 }

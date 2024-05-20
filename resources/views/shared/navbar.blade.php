@@ -27,18 +27,27 @@
                            href="{{ url('haul') }}">Połowy</a>
                     </li>
                 @endif
-                <li>
-                    <a class="nav-link {{ Request::is('profile') ? 'active' : '' }}"
-                       href="{{ url('profile') }}">Profil</a>
-                </li>
 
-                @if(Auth::check())
             </ul>
-            <a class="btn btn-success ms-auto " href="{{ Route('logout') }}">Log Out</a>
-            @else
-                </ul>
+            @if(Auth::check())
 
-            <a class="btn btn-success ms-auto " href="{{ Route('login') }}">Log In</a>
+                <div class="btn-group ms-auto">
+                    <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                        Witaj {{ auth()->user()->fisherman->name }}
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="{{ url('profile') }}">Profil</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="{{ route('logout') }}">Wyloguj</a></li>
+                    </ul>
+                </div>
+
+            @else
+
+                <a class="btn btn-success ms-auto " href="{{ Route('login') }}">Log In</a>
             @endif
         </div>
     </div>

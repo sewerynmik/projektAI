@@ -1,11 +1,10 @@
 @include('shared.html')
 
-@include('shared.head', ['pageTitle' => 'Ryby'])
+@include('shared.head', ['pageTitle' => 'Rybacy'])
 
-<body>
 @include('shared.navbar')
 <div class="row mt-4 mb-4 text-center">
-    <h1>Podaj dane rybaka</h1>
+    <h1>Podaj dane łowiska</h1>
 </div>
 
 <div class="row d-flex justify-content-center">
@@ -22,11 +21,11 @@
             <div class="form-group mb-2">
                 <label for="surname" class="form-label">Nazwisko</label>
                 <input id="surname" name="surname" type="text"
-                       class="form-control @if ($errors->first('surnme')) is-invalid @endif" >
+                       class="form-control @if ($errors->first('surnme')) is-invalid @endif">
                 <div class="invalid-feedback">Nieprawidłowe nawisko!</div>
             </div>
             <div class="form-group mb-2">
-                <label for="age" class="form-label">wiek</label>
+                <label for="age" class="form-label">Wiek</label>
                 <input id="age" name="age" type="text"
                        class="form-control @if ($errors->first('age')) is-invalid @endif">
                 <div class="invalid-feedback">Nieprawidłowy wiek!</div>
@@ -36,12 +35,6 @@
                 <input id="phone_number" name="phone_number" type="text"
                        class="form-control @if ($errors->first('phone_number')) is-invalid @endif">
                 <div class="invalid-feedback">Nieprawidłowy numer!</div>
-            </div>
-            <div class="form-group mb-2">
-                <label for="email" class="form-label">Email</label>
-                <input id="email" name="email" type="text"
-                       class="form-control @if ($errors->first('email')) is-invalid @endif">
-                <div class="invalid-feedback">Nieprawidłowy email!</div>
             </div>
             <div class="form-group mb-2">
                 <label for="address" class="form-label">Adres</label>
@@ -57,4 +50,4 @@
     </div>
 </div>
 
-</body>
+@include('shared.footer')

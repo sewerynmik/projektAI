@@ -25,7 +25,6 @@ class FishermanSeeder extends Seeder
                 'surname' => 'Kowalski',
                 'age' => 45,
                 'phone_number' => 123456789,
-                'email' => 'jan@email.com',
                 'address' => 'ul. Kowalskiego 1, 00-001 Warszawa'
             ],
             [
@@ -33,7 +32,6 @@ class FishermanSeeder extends Seeder
                 'surname' => 'Nowak',
                 'age' => 35,
                 'phone_number' => 987654321,
-                'email' => 'adam@email.com',
                 'address' => 'ul. Nowaka 2, 00-002 Warszawa'
             ],
             [
@@ -41,7 +39,6 @@ class FishermanSeeder extends Seeder
                 'surname' => 'Kowalczyk',
                 'age' => 28,
                 'phone_number' => 567890123,
-                'email' => 'anna@email.com',
                 'address' => 'ul. Kowalczyk 3, 00-003 Warszawa'
             ],
             [
@@ -49,7 +46,6 @@ class FishermanSeeder extends Seeder
                 'surname' => 'Lewandowski',
                 'age' => 52,
                 'phone_number' => 456789012,
-                'email' => 'piotr@email.com',
                 'address' => 'ul. Lewandowskiego 4, 00-004 Warszawa'
             ]
 

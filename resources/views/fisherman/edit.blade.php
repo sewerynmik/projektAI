@@ -5,7 +5,7 @@
 <body>
 @include('shared.navbar')
 <div class="row mt-4 mb-4 text-center">
-    <h1>Edytuj dane tybaka</h1>
+    <h1>Edytuj dane rybaka</h1>
 </div>
 
 <div class="row d-flex justify-content-center">
@@ -22,7 +22,7 @@
             <div class="form-group mb-2">
                 <label for="surname" class="form-label">Nazwisko</label>
                 <input id="surname" name="surname" type="text"
-                       class="form-control @if ($errors->first('surnme')) is-invalid @endif" value="{{ $fisherman->surname }}">
+                       class="form-control @if ($errors->first('surname')) is-invalid @endif" value="{{ $fisherman->surname }}">
                 <div class="invalid-feedback">Nieprawidłowe nawisko!</div>
             </div>
             <div class="form-group mb-2">
@@ -38,13 +38,6 @@
                        class="form-control @if ($errors->first('phone_number')) is-invalid @endif"
                        value="{{ $fisherman->phone_number }}">
                 <div class="invalid-feedback">Nieprawidłowy numer!</div>
-            </div>
-            <div class="form-group mb-2">
-                <label for="email" class="form-label">Email</label>
-                <input id="email" name="email" type="text"
-                       class="form-control @if ($errors->first('email')) is-invalid @endif"
-                       value="{{ $fisherman->email }}">
-                <div class="invalid-feedback">Nieprawidłowy email!</div>
             </div>
             <div class="form-group mb-2">
                 <label for="address" class="form-label">Adres</label>

@@ -10,7 +10,7 @@ class Fish extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'species', 'description'];
+    protected $fillable = ['name', 'species', 'description', 'image'];
 
     public function hauls() : HasMany
     {

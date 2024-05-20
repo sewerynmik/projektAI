@@ -4,19 +4,6 @@
 
 @include('shared.navbar')
 
-<div class="btn-group">
-    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Action
-    </button>
-    <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Separated link</a>
-    </div>
-</div>
-
 <div id="ryby" class="container mt-5 mb-5">
     <div class="row">
         <div class="col-md-6">
@@ -56,7 +43,6 @@
                     @can('is-admin')
                         <td><a href="{{route('fish.edit', $fish->id)}}" class="btn btn-primary">Edycja</a></td>
                         <td>
-                            {{--                            <a href="{{route('fish.destroy', $fish->id)}}" class="btn btn-danger">Usuń</a>--}}
                             <form method="POST" action="{{ route('fish.destroy', $fish->id) }}">
                                 @csrf
                                 @method('DELETE')

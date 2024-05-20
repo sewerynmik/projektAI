@@ -10,8 +10,15 @@ class Fishery extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name', 'voivodeship', 'perish', 'locality'];
+
     public function hauls(): HasMany
     {
         return $this->hasMany(Haul::class);
+    }
+
+    public function relatedRecordsExist(): bool
+    {
+        return $this->hauls()->exists();
     }
 }

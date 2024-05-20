@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Haul;
 use Illuminate\Http\Request;
 use App\Models\Fish;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class FishController extends Controller

@@ -32,13 +32,13 @@
                        href="{{ url('profile') }}">Profil</a>
                 </li>
 
-            @if(Auth::check())
-                <a class="btn btn-success ms-auto " href="{{ Route('logout') }}">Log Out</a>
+                @if(Auth::check())
             </ul>
-                @else
-                    </ul>
+            <a class="btn btn-success ms-auto " href="{{ Route('logout') }}">Log Out</a>
+            @else
+                </ul>
 
-                <a class="btn btn-success ms-auto " href="{{ Route('login') }}">Log In</a>
+            <a class="btn btn-success ms-auto " href="{{ Route('login') }}">Log In</a>
             @endif
         </div>
     </div>

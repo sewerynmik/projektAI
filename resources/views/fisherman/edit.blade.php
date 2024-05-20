@@ -14,30 +14,44 @@
             @csrf
             @method('PUT')
             <div class="form-group mb-2">
-                <label for="name" class="form-label">Nazwa ryby</label>
+                <label for="name" class="form-label">Imie</label>
                 <input id="name" name="name" type="text"
-                       class="form-control @if ($errors->first('name')) is-invalid @endif" value="{{ $fish->name }}">
-                <div class="invalid-feedback">Nieprawidłowa nazwa!</div>
+                       class="form-control @if ($errors->first('name')) is-invalid @endif" value="{{ $fisherman->name }}">
+                <div class="invalid-feedback">Nieprawidłowe imie!</div>
             </div>
             <div class="form-group mb-2">
-                <label for="species" class="form-label">Gatunek</label>
-                <input id="species" name="species" type="text"
-                       class="form-control @if ($errors->first('species')) is-invalid @endif" value="{{ $fish->species }}">
-                <div class="invalid-feedback">Nieprawidłowy gatunek!</div>
+                <label for="surname" class="form-label">Nazwisko</label>
+                <input id="surname" name="surname" type="text"
+                       class="form-control @if ($errors->first('surnme')) is-invalid @endif" value="{{ $fisherman->surname }}">
+                <div class="invalid-feedback">Nieprawidłowe nawisko!</div>
             </div>
             <div class="form-group mb-2">
-                <label for="description" class="form-label">Opis</label>
-                <input id="description" name="description" type="text"
-                       class="form-control @if ($errors->first('description')) is-invalid @endif"
-                       value="{{ $fish->description }}">
-                <div class="invalid-feedback">Nieprawidłowa opis!</div>
+                <label for="age" class="form-label">wiek</label>
+                <input id="age" name="age" type="text"
+                       class="form-control @if ($errors->first('age')) is-invalid @endif"
+                       value="{{ $fisherman->age }}">
+                <div class="invalid-feedback">Nieprawidłowy wiek!</div>
             </div>
             <div class="form-group mb-2">
-                <label for="image" class="form-label">Zdjęcie</label>
-                <input id="image" name="image" type="text"
-                       class="form-control @if ($errors->first('image')) is-invalid @endif"
-                       value="{{ $fish->image }}">
-                <div class="invalid-feedback">Nieprawidłowe zdjęcie!</div>
+                <label for="phone_number" class="form-label">Numer telefonu</label>
+                <input id="phone_number" name="phone_number" type="text"
+                       class="form-control @if ($errors->first('phone_number')) is-invalid @endif"
+                       value="{{ $fisherman->phone_number }}">
+                <div class="invalid-feedback">Nieprawidłowy numer!</div>
+            </div>
+            <div class="form-group mb-2">
+                <label for="email" class="form-label">Email</label>
+                <input id="email" name="email" type="text"
+                       class="form-control @if ($errors->first('email')) is-invalid @endif"
+                       value="{{ $fisherman->email }}">
+                <div class="invalid-feedback">Nieprawidłowy email!</div>
+            </div>
+            <div class="form-group mb-2">
+                <label for="address" class="form-label">Adres</label>
+                <input id="address" name="address" type="text"
+                       class="form-control @if ($errors->first('address')) is-invalid @endif"
+                       value="{{ $fisherman->address }}">
+                <div class="invalid-feedback">Nieprawidłowy adres!</div>
             </div>
 
             <div class="text-center mt-4 mb-4">

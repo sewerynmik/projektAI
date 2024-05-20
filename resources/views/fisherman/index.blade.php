@@ -7,7 +7,14 @@
 
     <div id="cennik" class="container mt-5 mb-5">
         <div class="row">
-            <h1>Rybacy</h1>
+            <div class="col-md-6">
+                <h1>Ryby</h1>
+            </div>
+            @can('is-admin')
+                <div class="col-md-6 d-flex justify-content-end align-items-center">
+                    <a href="{{ route('fisherman.create') }}" class="btn btn-dark">Dodaj</a>
+                </div>
+            @endcan
         </div>
         <div class="table-responsive-sm">
             <table class="table table-hover table-striped">

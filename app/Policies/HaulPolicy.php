@@ -4,26 +4,15 @@ namespace App\Policies;
 
 use App\Models\Haul;
 use App\Models\User;
-use Illuminate\Auth\Access\HandlesAuthorization;
-use Illuminate\Support\Facades\Log;
 
 class HaulPolicy
 {
-    use HandlesAuthorization;
-
-    /**
-     * Determine whether the user can view any models.
-     */
-
     /**
      * Determine whether the user can view the model.
      */
     public function view(User $user, Haul $haul): bool
     {
-        Log::info('User fisherman_id: ' . $user->fisherman_id);
-        Log::info('Haul fisherman_id: ' . $haul->fisherman_id);
-
-        return $user->fisherman_id === $haul->fisherman_id;
+        return true;
     }
 
     /**
@@ -39,7 +28,7 @@ class HaulPolicy
      */
     public function update(User $user, Haul $haul): bool
     {
-        return $user->haul_id === $haul->id;
+        return true;
     }
 
     /**

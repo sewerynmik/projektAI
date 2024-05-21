@@ -4,32 +4,44 @@ namespace App\Policies;
 
 use App\Models\Fish;
 use App\Models\User;
-use Illuminate\Auth\Access\HandlesAuthorization;
 
 class FishPolicy
 {
-    use HandlesAuthorization;
-
-
-    public function create(User $user): bool
+    public function view(User $user): bool
     {
         return true;
     }
-
-    public function update(User $user): bool
+    public function viewAny(User $user): bool
     {
         return true;
     }
-
-    public function delete(User $user): bool
+    public function show(User $user, Fish $fish): bool
     {
         return true;
     }
-
-    public function view(User $user, Fish $fish): bool
+    public function forceDelete(User $user, Fish $fish): bool
     {
-        return false;
+        return $user->isAdmin();
     }
+    public function create(User $user, Fish $fish): bool
+    {
+        return $user->isAdmin();
+    }
+    public function update(User $user, Fish $fish): bool
+    {
+        return $user->isAdmin();
+    }
+    public function delete(User $user, Fish $fish): bool
+    {
+        return $user->isAdmin();
+    }
+    public function restore(User $user, Fish $fish): bool
+    {
+        return $user->isAdmin();
+    }
+
+
+
 
 
 }

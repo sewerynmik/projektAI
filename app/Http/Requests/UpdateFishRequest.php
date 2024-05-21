@@ -9,7 +9,7 @@ class UpdateFishRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|unique:fish,name,'.$this->fish->name,
+            'name' => 'required|string|unique:fish,name,'.$this->fish->id,
             'species' => 'required|string',
             'description' => 'required|string',
             'image' => 'required',

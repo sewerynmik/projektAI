@@ -2,8 +2,12 @@
 
 namespace App\Providers;
 
+use App\Models\Fish;
+use App\Models\Fishery;
 use App\Models\Haul;
 use App\Models\User;
+use App\Policies\FisheryPolicy;
+use App\Policies\FishPolicy;
 use App\Policies\HaulPolicy;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Support\ServiceProvider;
@@ -36,5 +40,6 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Gate::policy(Haul::class, HaulPolicy::class);
+        Gate::policy(Fishery::class, FisheryPolicy::class);
     }
 }

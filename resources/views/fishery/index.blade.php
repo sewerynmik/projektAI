@@ -51,7 +51,6 @@
         <table class="table table-hover table-striped">
             <thead>
             <tr>
-                <th>{{ $user->fisherman_id }}</th>
                 <th scope="col">#</th>
                 <th scope="col">Nazwa</th>
                 <th scope="col">Województwo</th>

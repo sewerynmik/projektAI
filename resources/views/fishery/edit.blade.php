@@ -22,7 +22,8 @@
             <div class="form-group mb-2">
                 <label for="voivodeship" class="form-label">Województwo</label>
                 <input id="voivodeship" name="voivodeship" type="text"
-                       class="form-control @if ($errors->first('voivodeship')) is-invalid @endif" value="{{ $fishery->voivodeship }}">
+                       class="form-control @if ($errors->first('voivodeship')) is-invalid @endif"
+                       value="{{ $fishery->voivodeship }}">
                 <div class="invalid-feedback">Nieprawidłowe województwo!</div>
             </div>
             <div class="form-group mb-2">

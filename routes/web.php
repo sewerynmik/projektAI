@@ -15,6 +15,7 @@ Route::get('/', function () {
 Route::controller(FishController::class)->group(function () {
     Route::get('/fish', 'index')->name('fish.index');
     Route::get('/fish/{fish}', 'show')->name('fish.show');
+    Route::get('/fish/create', 'create')->name('fish.create');
 });
 
 Route::resource('fish', FishController::class)->except('index', 'show')->middleware('auth');
@@ -27,7 +28,9 @@ Route::resource('fishery', FisheryController::class)->except('index')->middlewar
 
 Route::resource('fisherman', FishermanController::class)->middleware('auth');
 
+Route::get('/haul/add', [HaulController::class, 'add'])->name('haul.add')->middleware('auth');
 Route::resource('haul', HaulController::class)->middleware('auth');
+
 
 Route::controller(AuthController::class)->group(function () {
     Route::get('/auth/login', 'login')->name('login');

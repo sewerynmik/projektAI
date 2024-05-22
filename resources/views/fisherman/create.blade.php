@@ -37,14 +37,20 @@
                 <div class="invalid-feedback">Nieprawidłowy numer!</div>
             </div>
             <div class="form-group mb-2">
+                <label for="pesel" class="form-label">Pesel</label>
+                <input id="pesel" name="pesel" type="text"
+                       class="form-control @if ($errors->first('pesel')) is-invalid @endif">
+                <div class="invalid-feedback">Nieprawidłowy pesel!</div>
+            </div>
+            <div class="form-group mb-2">
                 <label for="address" class="form-label">Adres</label>
                 <input id="address" name="address" type="text"
                        class="form-control @if ($errors->first('address')) is-invalid @endif">
                 <div class="invalid-feedback">Nieprawidłowy adres!</div>
-            </div>
 
-            <div class="text-center mt-4 mb-4">
-                <input class="btn btn-success" type="submit" value="Wyślij">
+                <div class="text-center mt-4 mb-4">
+                    <input class="btn btn-success" type="submit" value="Wyślij">
+                </div>
             </div>
         </form>
     </div>

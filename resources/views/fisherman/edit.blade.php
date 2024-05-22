@@ -10,19 +10,22 @@
 
 <div class="row d-flex justify-content-center">
     <div class="col-6">
-        <form method="POST" action="{{ route('fisherman.update', $fisherman->id) }}" class="needs-validation" novalidate>
+        <form method="POST" action="{{ route('fisherman.update', $fisherman->id) }}" class="needs-validation"
+              novalidate>
             @csrf
             @method('PUT')
             <div class="form-group mb-2">
                 <label for="name" class="form-label">Imie</label>
                 <input id="name" name="name" type="text"
-                       class="form-control @if ($errors->first('name')) is-invalid @endif" value="{{ $fisherman->name }}">
+                       class="form-control @if ($errors->first('name')) is-invalid @endif"
+                       value="{{ $fisherman->name }}">
                 <div class="invalid-feedback">Nieprawidłowe imie!</div>
             </div>
             <div class="form-group mb-2">
                 <label for="surname" class="form-label">Nazwisko</label>
                 <input id="surname" name="surname" type="text"
-                       class="form-control @if ($errors->first('surname')) is-invalid @endif" value="{{ $fisherman->surname }}">
+                       class="form-control @if ($errors->first('surname')) is-invalid @endif"
+                       value="{{ $fisherman->surname }}">
                 <div class="invalid-feedback">Nieprawidłowe nawisko!</div>
             </div>
             <div class="form-group mb-2">
@@ -40,11 +43,11 @@
                 <div class="invalid-feedback">Nieprawidłowy numer!</div>
             </div>
             <div class="form-group mb-2">
-                <label for="address" class="form-label">Adres</label>
-                <input id="address" name="address" type="text"
-                       class="form-control @if ($errors->first('address')) is-invalid @endif"
-                       value="{{ $fisherman->address }}">
-                <div class="invalid-feedback">Nieprawidłowy adres!</div>
+                <label for="pesel" class="form-label">Pesel</label>
+                <input id="pesel" name="pesel" type="text"
+                       class="form-control @if ($errors->first('pesel')) is-invalid @endif"
+                       value="{{ $fisherman->pesel }}">
+                <div class="invalid-feedback">Nieprawidłowy pesel!</div>
             </div>
 
             <div class="text-center mt-4 mb-4">

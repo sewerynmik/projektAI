@@ -9,7 +9,10 @@ class StoreHaulRequest extends FormRequest
     public function rules(): array
     {
         return [
-
+            'fisherman_id' => 'required|exists:fishermen,id',
+            'fish_id' => 'required|exists:fish,id',
+            'fishery_id' => 'required|exists:fisheries,id',
+            'data' => 'required|date',
         ];
     }
 

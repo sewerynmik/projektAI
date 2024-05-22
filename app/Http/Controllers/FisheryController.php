@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreFisheryRequest;
 use App\Models\Fishery;
 use App\Models\Haul;
 use Illuminate\Http\Request;
@@ -17,71 +18,48 @@ class FisheryController extends Controller
 
     public function create()
     {
-        if (! Gate::allows('create')){
+        if (!Gate::allows('create')) {
             return redirect()->back();
         }
         return view('fishery.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreFisheryRequest $request)
     {
-        if (! Gate::allows('create')){
+        if (!Gate::allows('create')) {
             return redirect()->back();
         }
-        $validatedData = $request->validate([
-            'name' => 'required|string|unique:fish,name,',
-            'voivodeship' => 'required|string',
-            'parish' => 'required|string',
-            'locality' => 'required|string',
-        ]);
 
-        $fishery = new Fishery();
-        $fishery->name = $validatedData['name'];
-        $fishery->voivodeship = $validatedData['voivodeship'];
-        $fishery->parish = $validatedData['parish'];
-        $fishery->locality = $validatedData['locality'];
+        $input = $request->all();
 
-
-        $fishery->save();
+        Fishery::create($input);
 
         return redirect()->route('fishery.index')->with('success', 'Łowisko zostało pomyślnie dodane.');
     }
 
-    public function edit($id)
+    public function edit(Fishery $fishery)
     {
-        if (! Gate::allows('edit')){
+        if (!Gate::allows('edit')) {
             return redirect()->back();
         }
-        $fishery = Fishery::findORFail($id);
+
         return view('fishery.edit', ['fishery' => $fishery,
             'houl' => Haul::all()]);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Fishery $fishery)
     {
-        if (! Gate::allows('edit')){
-            return redirect()->back();
-        }
 
-        $request->validate([
-            'name' => 'required|string|unique:fish,name,' . $id,
-            'voivodeship' => 'required|string',
-            'parish' => 'required|string',
-            'locality' => 'required|string',
-        ]);
-
-        $fishery = Fishery::findOrFail($id);
         $input = $request->all();
         $fishery->update($input);
         return redirect()->route('fishery.index');
     }
 
-    public function destroy($id)
+    public function destroy(Fishery $fishery)
     {
-        if (! Gate::allows('delete')){
+        if (!Gate::allows('delete')) {
             return redirect()->back();
         }
-        $fishery = Fishery::findORFail($id);
 
         if ($fishery->relatedRecordsExist()) {
             return back()->with('error', 'Nie można usunąć łowiska, ponieważ istnieją powiązane rekordy w innych tabelach.');

@@ -23,7 +23,7 @@
                 <th scope="col">Imie</th>
                 <th scope="col">Nazwisko</th>
                 <th scope="col">Wiek</th>
-                <th scope="col">Email</th>
+                <th scope="col">Pesel</th>
                 <th scope="col">Adres</th>
                 @can('is-admin')
                     <th scope="col"></th>
@@ -39,7 +39,7 @@
                     <td>{{ $fisherman->surname }}</td>
                     <td>{{ $fisherman->age }}</td>
                     <td>{{ $fisherman->phone_number }}</td>
-                    <td>{{ $fisherman->address }}</td>
+                    <td>{{ $fisherman->pesel }}</td>
                     @can('is-admin')
                         <td><a href="{{ route('fisherman.edit', $fisherman->id) }}" class="btn btn-primary">Edytuj</a>
                         </td>

@@ -11,7 +11,7 @@ class Fisherman extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'surname', 'age', 'phone_number', 'address'];
+    protected $fillable = ['name', 'surname', 'age', 'phone_number', 'pesel'];
 
     public function hauls(): HasMany
     {

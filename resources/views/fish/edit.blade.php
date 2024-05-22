@@ -22,7 +22,8 @@
             <div class="form-group mb-2">
                 <label for="species" class="form-label">Gatunek</label>
                 <input id="species" name="species" type="text"
-                       class="form-control @if ($errors->first('species')) is-invalid @endif" value="{{ $fish->species }}">
+                       class="form-control @if ($errors->first('species')) is-invalid @endif"
+                       value="{{ $fish->species }}">
                 <div class="invalid-feedback">Nieprawidłowy gatunek!</div>
             </div>
             <div class="form-group mb-2">

@@ -11,12 +11,12 @@
                 <li class="nav-item">
                     <a class="nav-link {{ Request::is('fish') ? 'active' : '' }}" href="{{ url('fish') }}">Ryby</a>
                 </li>
-                @if (Auth::check())
+                @can('is-admin')
                     <li class="nav-item">
                         <a class="nav-link {{ Request::is('fisherman') ? 'active' : '' }}"
                            href="{{ url('fisherman') }}">Rybacy</a>
                     </li>
-                @endif
+                @endcan
                 <li class="nav-item">
                     <a class="nav-link {{ Request::is('fishery') ? 'active' : '' }}"
                        href="{{ url('fishery') }}">Łowiska</a>
@@ -47,7 +47,7 @@
 
             @else
 
-                <a class="btn btn-success ms-auto " href="{{ Route('login') }}">Log In</a>
+                <a class="btn btn-success ms-auto " href="{{ Route('login') }}">Zaloguj</a>
             @endif
         </div>
     </div>

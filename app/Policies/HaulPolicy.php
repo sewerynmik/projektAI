@@ -20,7 +20,7 @@ class HaulPolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        return $user->isAdmin();
     }
 
     /**
@@ -28,7 +28,10 @@ class HaulPolicy
      */
     public function update(User $user, Haul $haul): bool
     {
-        return true;
+        if ($user->isAdmin()){
+            return true;
+        }
+        return $user->fisherman_id === $haul->fisherman_id;
     }
 
     /**
@@ -36,7 +39,10 @@ class HaulPolicy
      */
     public function delete(User $user, Haul $haul): bool
     {
-        return true;
+        if ($user->isAdmin()){
+            return true;
+        }
+        return $user->fisherman_id === $haul->fisherman_id;
     }
 
     /**

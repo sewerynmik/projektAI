@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreFishermanRequest;
 use App\Models\Fisherman;
 use App\Models\Haul;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 
 class FishermanController extends Controller
@@ -16,56 +18,42 @@ class FishermanController extends Controller
 
     public function create()
     {
+        if (!Gate::allows('create')) {
+            return redirect()->back();
+        }
         return view('fisherman.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreFishermanRequest $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|string',
-            'surname' => 'required|string',
-            'age' => 'required|numeric|digits_between:1,3',
-            'phone_number' => 'required|numeric|digits:9|unique:fishermen,phone_number,',
-            'address' => 'required'
-        ]);
+        if (!Gate::allows('create')) {
+            return redirect()->back();
+        }
+        $input = $request->all();
 
-        $fisherman = new Fisherman();
-        $fisherman->name = $validatedData['name'];
-        $fisherman->surname = $validatedData['surname'];
-        $fisherman->age = $validatedData['age'];
-        $fisherman->phone_number = $validatedData['phone_number'];
-        $fisherman->address = $validatedData['address'];
-
-        $fisherman->save();
+        Fisherman::create($input);
 
         return redirect()->route('fisherman.index')->with('success', 'Ryba została pomyślnie dodana.');
     }
 
-    public function edit($id)
+    public function edit(Fisherman $fisherman)
     {
-        $fisherman = Fisherman::findORFail($id);
         return view('fisherman.edit', ['fisherman' => $fisherman, 'hauls' => Haul::all()]);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Fisherman $fisherman)
     {
-        $request->validate([
-            'name' => 'required|string',
-            'surname' => 'required|string',
-            'age' => 'required|numeric|digits_between:1,3',
-            'phone_number' => 'required|numeric|digits:9|unique:fishermen,phone_number,'.$id,
-            'address' => 'required',
-        ]);
 
-        $fisherman = Fisherman::findOrFail($id);
         $input = $request->all();
         $fisherman->update($input);
         return redirect()->route('fisherman.index');
     }
 
-    public function destroy($id)
+    public function destroy(Fisherman $fisherman)
     {
-        $fisherman = Fisherman::findORFail($id);
+        if (!Gate::allows('delete')) {
+            return redirect()->back();
+        }
 
         if ($fisherman->relatedRecordsExist()) {
             return back()->with('error', 'Nie można usunąć rybaka, ponieważ istnieją powiązane rekordy w innych tabelach.');

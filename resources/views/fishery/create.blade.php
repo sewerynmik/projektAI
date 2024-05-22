@@ -15,13 +15,13 @@
             <div class="form-group mb-2">
                 <label for="name" class="form-label">Nazwa</label>
                 <input id="name" name="name" type="text"
-                       class="form-control @if ($errors->first('name')) is-invalid @endif" >
+                       class="form-control @if ($errors->first('name')) is-invalid @endif">
                 <div class="invalid-feedback">Nieprawidłowa nazwa!</div>
             </div>
             <div class="form-group mb-2">
                 <label for="voivodeship" class="form-label">Województwo</label>
                 <input id="voivodeship" name="voivodeship" type="text"
-                       class="form-control @if ($errors->first('voivodeship')) is-invalid @endif" >
+                       class="form-control @if ($errors->first('voivodeship')) is-invalid @endif">
                 <div class="invalid-feedback">Nieprawidłowe województwo!</div>
             </div>
             <div class="form-group mb-2">

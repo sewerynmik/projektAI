@@ -20,7 +20,7 @@ class FishController extends Controller
 
     public function create()
     {
-        if (! Gate::allows('create')) {
+        if (!Gate::allows('create')) {
             return redirect()->back();
         }
         return view('fish.create');
@@ -33,7 +33,7 @@ class FishController extends Controller
 
     public function edit(Fish $fish)
     {
-        if (! Gate::allows('update', $fish)) {
+        if (!Gate::allows('update', $fish)) {
             return redirect()->back();
         }
         return view('fish.edit', ['fish' => $fish,
@@ -42,7 +42,7 @@ class FishController extends Controller
 
     public function update(UpdateFishRequest $request, Fish $fish)
     {
-        if (! Gate::allows('update', $fish)) {
+        if (!Gate::allows('update', $fish)) {
             return redirect()->back();
         }
         $input = $request->all();
@@ -50,8 +50,9 @@ class FishController extends Controller
         return redirect()->route('fish.index');
     }
 
-    public function destroy(Fish $fish){
-        if (! Gate::allows('delete', $fish)) {
+    public function destroy(Fish $fish)
+    {
+        if (!Gate::allows('delete', $fish)) {
             return redirect()->back();
         }
         if ($fish->relatedRecordsExist()) {
@@ -64,7 +65,7 @@ class FishController extends Controller
 
     public function store(StoreFishRequest $request)
     {
-        if (! Gate::allows('create', Fish::class)) {
+        if (!Gate::allows('create', Fish::class)) {
             return redirect()->back();
         }
         $input = $request->all();

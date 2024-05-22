@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('surname');
             $table->integer('age');
             $table->integer('phone_number');
-            $table->string('address');
+            $table->string('pesel');
             $table->timestamps();
         });
     }

@@ -3,9 +3,11 @@
 namespace App\Providers;
 
 use App\Models\Fish;
+use App\Models\Fisherman;
 use App\Models\Fishery;
 use App\Models\Haul;
 use App\Models\User;
+use App\Policies\FishermanPolicy;
 use App\Policies\FisheryPolicy;
 use App\Policies\FishPolicy;
 use App\Policies\HaulPolicy;
@@ -40,6 +42,8 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Gate::policy(Haul::class, HaulPolicy::class);
+        Gate::policy(Fish::class, FishPolicy::class);
         Gate::policy(Fishery::class, FisheryPolicy::class);
+        Gate::policy(Fisherman::class, FishermanPolicy::class);
     }
 }

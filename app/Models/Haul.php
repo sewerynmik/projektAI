@@ -10,17 +10,20 @@ class Haul extends Model
 {
     use HasFactory;
 
-    public function fisherman() : BelongsTo
+    protected $fillable = ['fisherman_id', 'fish_id','fishery_id' ,'data'];
+
+
+    public function fisherman(): BelongsTo
     {
         return $this->belongsTo(Fisherman::class);
     }
 
-    public function fish() : BelongsTo
+    public function fish(): BelongsTo
     {
         return $this->belongsTo(Fish::class);
     }
 
-    public function fishery() : BelongsTo
+    public function fishery(): BelongsTo
     {
         return $this->belongsTo(Fishery::class);
     }

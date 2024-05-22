@@ -12,18 +12,7 @@
         <form method="POST" action="{{ route('haul.store') }}" class="needs-validation" novalidate>
             @csrf
             @method('POST')
-            <div class="form-group mb-2">
-                <label for="fisherman_id" class="form-label">Rybak</label>
-                <select id="fisherman_id" name="fisherman_id" class="form-control @if ($errors->first('fisherman_id')) is-invalid @endif">
-                    <option>Wybierz rybaka</option>
-                    @foreach($fishermen as $fisherman)
-                        <option value="{{ $fisherman->id }}">
-                            {{ $fisherman->name }} {{ $fisherman->surname }} (PESEL: {{ $fisherman->pesel }})
-                        </option>
-                    @endforeach
-                </select>
-                <div class="invalid-feedback">Nieprawidłowy rybak!</div>
-            </div>
+            <input type="hidden" name="fisherman_id" value="{{ auth()->user()->fisherman->id }}">
             <div class="form-group mb-2">
                 <label for="fish_id" class="form-label">Ryba</label>
                 <select id="fish_id" name="fish_id" class="form-control @if ($errors->first('fish_id')) is-invalid @endif">

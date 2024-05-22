@@ -12,7 +12,7 @@ class Fish extends Model
 
     protected $fillable = ['name', 'species', 'description', 'image'];
 
-    public function hauls() : HasMany
+    public function hauls(): HasMany
     {
         return $this->hasMany(Haul::class);
     }

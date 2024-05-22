@@ -17,14 +17,18 @@
     </div>
 
     <p class="d-inline-flex gap-1">
-        <a class="btn btn-dark" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        <a class="btn btn-dark" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+           aria-controls="collapseExample">
             Filtry
         </a>
     </p>
     <div class="collapse" id="collapseExample">
-        <div class="dropdown-menu d-block position-static border-0 pt-0 mx-0 rounded-3 shadow overflow-hidden w-280px mb-2" data-bs-theme="ligth">
+        <div
+            class="dropdown-menu d-block position-static border-0 pt-0 mx-0 rounded-3 shadow overflow-hidden w-280px mb-2"
+            data-bs-theme="ligth">
             <form class="p-2 mb-2 bg-light border-bottom border-dark">
-                <input type="search" class="form-control bg-light" autocomplete="false" placeholder="Wpisz szukaną fraze">
+                <input type="search" class="form-control bg-light" autocomplete="false"
+                       placeholder="Wpisz szukaną fraze">
             </form>
             <ul class="list-unstyled mb-0">
                 <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" href="#">

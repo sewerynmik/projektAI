@@ -18,9 +18,9 @@ class FishController extends Controller
         return view('fish.index', compact('fishes'));
     }
 
-    public function create()
+    public function create(fish $fish)
     {
-        if (!Gate::allows('create')) {
+        if (!Gate::allows('create', $fish)) {
             return redirect()->back();
         }
         return view('fish.create');
@@ -63,9 +63,9 @@ class FishController extends Controller
         return redirect()->route('fish.index');
     }
 
-    public function store(StoreFishRequest $request)
+    public function store(StoreFishRequest $request, Fish $fish)
     {
-        if (!Gate::allows('create', Fish::class)) {
+        if (!Gate::allows('create', $fish)) {
             return redirect()->back();
         }
         $input = $request->all();

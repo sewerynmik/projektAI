@@ -8,7 +8,7 @@
 
 <div class="container">
     <div class="row justify-content-center mt-5">
-        <div class="col-md-6">
+        <div class="col-md-6 d-flex justify-content-center">
             <div class="card" style="width: 18rem;">
                 <img src="{{ asset('storage/img/'.$fish->image) }}" alt="">
 

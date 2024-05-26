@@ -52,13 +52,7 @@ class HaulController extends Controller
 
     public function store(StoreHaulRequest $request)
     {
-        $user = Auth::user();
-
         $input = $request->all();
-
-        if ($input->fisherman_id != Auth::user()->fisherman_id && !$user->isAdmin()){
-            return redirect()->back();
-        }
 
         Haul::create($input);
 

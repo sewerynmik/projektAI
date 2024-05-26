@@ -10,23 +10,27 @@ use Illuminate\Http\Request;
 
 class FishermanController extends Controller
 {
-    public function index()
+    public function index(Fisherman $fisherman)
     {
+        if(!Gate::allows('view', $fisherman)){
+            return redirect()->back();
+        }
+
         $fishermans = Fisherman::all();
         return view('fisherman.index', compact('fishermans'));
     }
 
-    public function create()
+    public function create(Fisherman $fisherman)
     {
-        if (!Gate::allows('create')) {
+        if (!Gate::allows('create', $fisherman)) {
             return redirect()->back();
         }
         return view('fisherman.create');
     }
 
-    public function store(StoreFishermanRequest $request)
+    public function store(StoreFishermanRequest $request, Fisherman $fisherman)
     {
-        if (!Gate::allows('create')) {
+        if (!Gate::allows('create', $fisherman)) {
             return redirect()->back();
         }
         $input = $request->all();
@@ -38,11 +42,17 @@ class FishermanController extends Controller
 
     public function edit(Fisherman $fisherman)
     {
+        if (!Gate::allows('update', $fisherman)) {
+            return redirect()->back();
+        }
         return view('fisherman.edit', ['fisherman' => $fisherman, 'hauls' => Haul::all()]);
     }
 
     public function update(Request $request, Fisherman $fisherman)
     {
+        if (!Gate::allows('update', $fisherman)) {
+            return redirect()->back();
+        }
 
         $input = $request->all();
         $fisherman->update($input);
@@ -51,7 +61,7 @@ class FishermanController extends Controller
 
     public function destroy(Fisherman $fisherman)
     {
-        if (!Gate::allows('delete')) {
+        if (!Gate::allows('delete', $fisherman)) {
             return redirect()->back();
         }
 

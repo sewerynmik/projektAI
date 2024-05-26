@@ -5,5 +5,6 @@
     <title>{{ $pageTitle }}</title>
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
     <script src="{{ asset('js/bootstrap.bundle.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.min.js"></script>
 </head>
 <body>

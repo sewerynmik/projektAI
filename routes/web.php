@@ -12,16 +12,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('fish', FishController::class)->except('index', 'show')->middleware('auth');
+
 Route::controller(FishController::class)->group(function () {
     Route::get('/fish', 'index')->name('fish.index');
     Route::get('/fish/{fish}', 'show')->name('fish.show');
-    Route::get('/fish/create', 'create')->name('fish.create');
 });
-
-Route::resource('fish', FishController::class)->except('index', 'show')->middleware('auth');
 
 Route::controller(FisheryController::class)->group(function () {
     Route::get('/fishery', 'index')->name('fishery.index');
+    Route::get('/fishery/search', 'search')->name('fishery.search');
 });
 
 Route::resource('fishery', FisheryController::class)->except('index')->middleware('auth');
@@ -30,7 +30,6 @@ Route::resource('fisherman', FishermanController::class)->middleware('auth');
 
 Route::get('/haul/add', [HaulController::class, 'add'])->name('haul.add')->middleware('auth');
 Route::resource('haul', HaulController::class)->middleware('auth');
-
 
 Route::controller(AuthController::class)->group(function () {
     Route::get('/auth/login', 'login')->name('login');

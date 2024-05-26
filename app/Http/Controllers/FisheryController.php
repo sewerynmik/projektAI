@@ -16,17 +16,17 @@ class FisheryController extends Controller
         return view('fishery.index', compact('fisheries'));
     }
 
-    public function create()
+    public function create(Fishery $fishery)
     {
-        if (!Gate::allows('create')) {
+        if (!Gate::allows('create', $fishery)) {
             return redirect()->back();
         }
         return view('fishery.create');
     }
 
-    public function store(StoreFisheryRequest $request)
+    public function store(StoreFisheryRequest $request, Fishery $fishery)
     {
-        if (!Gate::allows('create')) {
+        if (!Gate::allows('create', $fishery)) {
             return redirect()->back();
         }
 
@@ -39,7 +39,7 @@ class FisheryController extends Controller
 
     public function edit(Fishery $fishery)
     {
-        if (!Gate::allows('edit')) {
+        if (!Gate::allows('update', $fishery)) {
             return redirect()->back();
         }
 
@@ -49,6 +49,9 @@ class FisheryController extends Controller
 
     public function update(Request $request, Fishery $fishery)
     {
+        if (!Gate::allows('update', $fishery)) {
+            return redirect()->back();
+        }
 
         $input = $request->all();
         $fishery->update($input);
@@ -57,7 +60,7 @@ class FisheryController extends Controller
 
     public function destroy(Fishery $fishery)
     {
-        if (!Gate::allows('delete')) {
+        if (!Gate::allows('delete', $fishery)) {
             return redirect()->back();
         }
 
@@ -68,4 +71,36 @@ class FisheryController extends Controller
         $fishery->delete();
         return redirect()->route('fishery.index');
     }
+
+    public function search(Request $request)
+    {
+        $searchTerm = $request->input('search');
+        $searchBy = $request->input('search_by');
+
+        $query = Fishery::query();
+
+        if (!empty($searchTerm) && !empty($searchBy)) {
+            switch ($searchBy) {
+                case 'name':
+                    $query->where('name', 'like', "%$searchTerm%");
+                    break;
+                case 'voivodeship':
+                    $query->where('voivodeship', 'like', "%$searchTerm%");
+                    break;
+                case 'parish':
+                    $query->where('parish', 'like', "%$searchTerm%");
+                    break;
+                case 'locality':
+                    $query->where('locality', 'like', "%$searchTerm%");
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        $fisheries = $query->get();
+
+        return view('fishery.search', compact('fisheries'));
+    }
+
 }

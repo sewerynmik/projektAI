@@ -10,7 +10,7 @@ class Fishery extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'voivodeship', 'perish', 'locality'];
+    protected $fillable = ['name', 'voivodeship', 'parish', 'locality'];
 
     public function hauls(): HasMany
     {

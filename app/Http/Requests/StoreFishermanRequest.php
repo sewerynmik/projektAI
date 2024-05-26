@@ -13,7 +13,7 @@ class StoreFishermanRequest extends FormRequest
             'surname' => 'required|string',
             'age' => 'required|numeric|digits_between:1,3',
             'phone_number' => 'required|numeric|digits:9|unique:fishermen,phone_number,',
-            'pesel' => 'required|numeric|digits:9|unique:fishermen,pesel,',
+            'pesel' => 'required|numeric|digits:11|unique:fishermen,pesel,',
         ];
     }
 

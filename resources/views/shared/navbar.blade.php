@@ -46,8 +46,10 @@
                 </div>
 
             @else
-
-                <a class="btn btn-success ms-auto " href="{{ Route('login') }}">Zaloguj</a>
+                <div class="ms-auto">
+                    <a class="btn btn-success me-2" href="{{ Route('register') }}">Zarejestruj</a>
+                    <a class="btn btn-success " href="{{ Route('login') }}">Zaloguj</a>
+                </div>
             @endif
         </div>
     </div>

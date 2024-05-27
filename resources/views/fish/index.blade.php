@@ -43,6 +43,7 @@
                     @can('is-admin')
                         <td><a href="{{route('fish.edit', $fish->id)}}" class="btn btn-primary">Edycja</a></td>
                         <td>
+                            {{--                            <a href="{{route('fish.destroy', $fish->id)}}" class="btn btn-danger">Usuń</a>--}}
                             <form method="POST" action="{{ route('fish.destroy', $fish->id) }}">
                                 @csrf
                                 @method('DELETE')

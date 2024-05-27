@@ -40,3 +40,7 @@ Route::controller(AuthController::class)->group(function () {
 Route::controller(UserController::class)->group(function () {
     Route::get('/profile', 'index')->name('users.index');
 });
+
+Route::fallback(function(){
+    return view('error');
+});

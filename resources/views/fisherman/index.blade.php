@@ -23,8 +23,8 @@
                 <th scope="col">Imie</th>
                 <th scope="col">Nazwisko</th>
                 <th scope="col">Wiek</th>
+                <th scope="col">Nr telefonu</th>
                 <th scope="col">Pesel</th>
-                <th scope="col">Adres</th>
                 @can('is-admin')
                     <th scope="col"></th>
                     <th scope="col"></th>

@@ -12,7 +12,10 @@ class HaulPolicy
      */
     public function view(User $user, Haul $haul): bool
     {
-        return true;
+        if ($user->isAdmin()){
+            return true;
+        }
+        return $user->fisherman_id === $haul->fisherman_id;
     }
 
     /**

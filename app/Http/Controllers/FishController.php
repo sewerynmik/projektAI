@@ -6,6 +6,7 @@ use App\Http\Requests\StoreFishRequest;
 use App\Http\Requests\UpdateFishRequest;
 use App\Models\Haul;
 use App\Models\Fish;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 
@@ -16,6 +17,37 @@ class FishController extends Controller
     {
         $fishes = DB::table('fish')->paginate(10);
         return view('fish.index', compact('fishes'));
+    }
+
+    public function search(Request $request)
+    {
+        $searchTerm = $request->input('search');
+        $searchBy = $request->input('search_by');
+
+        $query = Fish::query();
+
+        if (!empty($searchTerm) && !empty($searchBy)) {
+            switch ($searchBy) {
+                case 'name':
+                    $query->where('name', 'like', "%$searchTerm%");
+                    break;
+                case 'species':
+                    $query->where('species', 'like', "%$searchTerm%");
+                    break;
+                case 'description':
+                    $query->where('description', 'like', "%$searchTerm%");
+                    break;
+                case 'image':
+                    $query->where('image', 'like', "%$searchTerm%");
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        $fishes = $query->paginate(10);
+
+        return view('fish.search', compact('fishes'));
     }
 
     public function create(fish $fish)

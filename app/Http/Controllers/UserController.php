@@ -16,13 +16,19 @@ class UserController extends Controller
         $user = Auth::user();
 
         $hauls = Haul::where('fisherman_id', $user->fisherman_id)
-            ->with('fishery')
+            ->with('fish')
             ->select('fish_id', DB::raw('count(*) as total'))
             ->groupBy('fish_id')
             ->get();
 
+        $fisheries = Haul::where('fisherman_id', $user->fisherman_id)
+            ->with('fishery')
+            ->select('fishery_id', DB::raw('count(*) as total'))
+            ->groupBy('fishery_id')
+            ->get();
 
-        return view('user.index', compact('user', 'hauls'));
+
+        return view('user.index', compact('user', 'hauls', 'fisheries'));
     }
 
 }

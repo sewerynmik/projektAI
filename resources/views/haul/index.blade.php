@@ -25,7 +25,9 @@
             <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Rybak</th>
+                @can('is-admin')
+                    <th scope="col">Rybak</th>
+                @endcan
                 <th scope="col">Ryba</th>
                 <th scope="col">Łowisko</th>
                 <th scope="col">Data</th>
@@ -39,7 +41,9 @@
             @forelse ($hauls as $haul)
                 <tr>
                     <th scope="row">{{ $haul->id }}</th>
-                    <td>{{ $haul->fisherman->name }}</td>
+                    @can('is-admin')
+                        <td>{{ $haul->fisherman->name }}</td>
+                    @endcan
                     <td>{{ $haul->fish->name }}</td>
                     <td>{{ $haul->fishery->name }}</td>
                     <td>{{ $haul->data }}</td>

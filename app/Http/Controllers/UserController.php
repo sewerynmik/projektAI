@@ -31,4 +31,52 @@ class UserController extends Controller
         return view('user.index', compact('user', 'hauls', 'fisheries'));
     }
 
+
+    public function editPass()
+    {
+        $user = Auth::user();
+
+        return view('user.editPass', compact('user'));
+    }
+
+    public function updatePass()
+    {
+
+    }
+
+    public function editName()
+    {
+        $user = Auth::user();
+
+        return view('user.editName', compact('user'));
+    }
+
+    public function updateName()
+    {
+
+    }
+
+    public function editEmail()
+    {
+        $user = Auth::user();
+
+        return view('user.edit', compact('user'));
+    }
+
+    public function updateEmail()
+    {
+
+    }
+
+    public function edit()
+    {
+        $user = Auth::user();
+
+        return view('user.editEmail', compact('user'));
+    }
+
+    public function update()
+    {
+
+    }
 }

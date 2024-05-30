@@ -22,16 +22,16 @@
                     <hr>
                     <div class="row row-cols-2 row-cols-lg-4">
                         <div class="col mb-2">
-                            <a href="" class="btn btn-success w-100">Zmień dane</a>
+                            <a href="{{ route('users.edit') }}" class="btn btn-success w-100">Zmień dane</a>
                         </div>
                         <div class="col mb-2">
-                            <a href="" class="btn btn-primary w-100">Zmień email</a>
+                            <a href="{{ route('users.editEmail') }}" class="btn btn-primary w-100">Zmień email</a>
                         </div>
                         <div class="col mb-2">
-                            <a href="" class="btn btn-secondary w-100">Zmień nazwę</a>
+                            <a href="{{route('users.editName')}}" class="btn btn-secondary w-100">Zmień nazwę</a>
                         </div>
                         <div class="col mb-2">
-                            <a href="" class="btn btn-warning w-100">Zmień hasło</a>
+                            <a href="{{ route('users.editPass') }}" class="btn btn-warning w-100">Zmień hasło</a>
                         </div>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
                     label: "Złowione ryby",
                     data: [
                         @foreach($hauls as $haul)
-                            {{ $haul->total }},
+                                {{ $haul->total }},
                         @endforeach
                     ],
                     backgroundColor: [
@@ -100,7 +100,7 @@
                     label: "Łowiska na których złapano ryby",
                     data: [
                         @foreach($fisheries as $fishery)
-                            {{ $fishery->total }},
+                                {{ $fishery->total }},
                         @endforeach
                     ],
                     backgroundColor: [

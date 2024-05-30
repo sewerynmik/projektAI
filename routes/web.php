@@ -42,6 +42,16 @@ Route::controller(AuthController::class)->group(function () {
 
 Route::controller(UserController::class)->group(function () {
     Route::get('/profile', 'index')->name('users.index');
+    Route::get('/profile/edit/pass', 'editPass')->name('users.editPass');
+    Route::get('/profile/edit', 'edit')->name('users.edit');
+    Route::get('/profile/edit/name', 'editName')->name('users.editName');
+    Route::get('/profile/edit/email', 'editEmail')->name('users.editEmail');
+    Route::post('/profile/update/pass', 'updatePass')->name('users.updatePass');
+    Route::post('/profile/update/name', 'updateName')->name('users.updateName');
+    Route::post('/profile/update/email', 'updateEmail')->name('users.updateEmail');
+    Route::post('/profile/update', 'update')->name('users.update');
+
+
 });
 
 Route::fallback(function(){

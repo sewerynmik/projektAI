@@ -14,10 +14,10 @@
             @csrf
             @method('PUT')
             <div class="form-group mb-2">
-                <label for="name" class="form-label">Email</label>
+                <label for="name" class="form-label">Nazwa</label>
                 <input id="name" name="name" type="text"
                        class="form-control @if ($errors->first('name')) is-invalid @endif" value="{{ $user->name }}">
-                <div class="invalid-feedback">Nieprawidłowe hasło!</div>
+                <div class="invalid-feedback">Nieorawidłowa nazwa!</div>
             </div>
 
             <div class="text-center mt-4 mb-4">

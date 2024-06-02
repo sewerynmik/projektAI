@@ -9,7 +9,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::resource('fish', FishController::class)->except('index', 'show', 'search')->middleware('auth');
@@ -30,6 +30,7 @@ Route::resource('fishery', FisheryController::class)->except('index')->middlewar
 Route::resource('fisherman', FishermanController::class)->middleware('auth');
 
 Route::get('/haul/add', [HaulController::class, 'add'])->name('haul.add')->middleware('auth');
+
 Route::resource('haul', HaulController::class)->middleware('auth');
 
 Route::controller(AuthController::class)->group(function () {
@@ -40,18 +41,16 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('/register', [AuthController::class, 'store']);
 });
 
-Route::controller(UserController::class)->group(function () {
-    Route::get('/profile', 'index')->name('users.index');
-    Route::get('/profile/edit/pass', 'editPass')->name('users.editPass');
-    Route::get('/profile/edit', 'edit')->name('users.edit');
-    Route::get('/profile/edit/name', 'editName')->name('users.editName');
-    Route::get('/profile/edit/email', 'editEmail')->name('users.editEmail');
-    Route::post('/profile/update/pass', 'updatePass')->name('users.updatePass');
-    Route::post('/profile/update/name', 'updateName')->name('users.updateName');
-    Route::post('/profile/update/email', 'updateEmail')->name('users.updateEmail');
-    Route::post('/profile/update', 'update')->name('users.update');
-
-
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [UserController::class, 'index'])->name('users.index');
+    Route::get('/profile/edit/pass', [UserController::class, 'editPass'])->name('users.editPass');
+    Route::get('/profile/edit', [UserController::class, 'edit'])->name('users.edit');
+    Route::get('/profile/edit/name', [UserController::class, 'editName'])->name('users.editName');
+    Route::get('/profile/edit/email', [UserController::class, 'editEmail'])->name('users.editEmail');
+    Route::put('/profile/update/pass/{user}', [UserController::class, 'updatePass'])->name('users.updatePass');
+    Route::put('/profile/update/name/{user}', [UserController::class, 'updateName'])->name('users.updateName');
+    Route::put('/profile/update/email/{user}', [UserController::class, 'updateEmail'])->name('users.updateEmail');
+    Route::put('/profile/update/{fisherman}', [UserController::class, 'update'])->name('users.update');
 });
 
 Route::fallback(function(){

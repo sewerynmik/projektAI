@@ -10,48 +10,54 @@
 
 <div class="row d-flex justify-content-center">
     <div class="col-6">
-        <form method="POST" action="{{ route('users.updateEmail', $user->fisherman->id) }}" class="needs-validation"
+        <form method="POST" action="{{ route('users.update', $user->fisherman->id) }}" class="needs-validation"
               novalidate>
             @csrf
             @method('PUT')
             <div class="form-group mb-2">
                 <label for="name" class="form-label">Imie</label>
-                <input id="name" name="name" type="text"
-                       class="form-control @if ($errors->first('name')) is-invalid @endif"
+                <input id="name" name="name" type="text" class="form-control @error('name') is-invalid @enderror"
                        value="{{ $user->fisherman->name }}">
-                <div class="invalid-feedback">Nieprawidłowe imie!</div>
+                @error('name')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
             </div>
             <div class="form-group mb-2">
-                <label for="surname" class="form-label">Imie</label>
+                <label for="surname" class="form-label">Nazwisko</label>
                 <input id="surname" name="surname" type="text"
-                       class="form-control @if ($errors->first('surname')) is-invalid @endif"
+                       class="form-control @error('surname') is-invalid @enderror"
                        value="{{ $user->fisherman->surname }}">
-                <div class="invalid-feedback">Nieprawidłowe nazwisko!</div>
+                @error('surname')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
             </div>
             <div class="form-group mb-2">
                 <label for="age" class="form-label">Wiek</label>
-                <input id="age" name="age" type="text"
-                       class="form-control @if ($errors->first('age')) is-invalid @endif"
+                <input id="age" name="age" type="text" class="form-control @error('age') is-invalid @enderror"
                        value="{{ $user->fisherman->age }}">
-                <div class="invalid-feedback">Nieprawidłowy wiek!</div>
+                @error('age')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
             </div>
             <div class="form-group mb-2">
                 <label for="phone_number" class="form-label">Numer telefonu</label>
                 <input id="phone_number" name="phone_number" type="text"
-                       class="form-control @if ($errors->first('phone_number')) is-invalid @endif"
+                       class="form-control @error('phone_number') is-invalid @enderror"
                        value="{{ $user->fisherman->phone_number }}">
-                <div class="invalid-feedback">Nieprawidłowy numer telefonu!</div>
+                @error('phone_number')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
             </div>
             <div class="form-group mb-2">
-                <label for="pesel" class="form-label">Wiek</label>
-                <input id="pesel" name="pesel" type="text"
-                       class="form-control @if ($errors->first('pesel')) is-invalid @endif"
+                <label for="pesel" class="form-label">PESEL</label>
+                <input id="pesel" name="pesel" type="text" class="form-control @error('pesel') is-invalid @enderror"
                        value="{{ $user->fisherman->pesel }}">
-                <div class="invalid-feedback">Nieprawidłowy pesel!</div>
+                @error('pesel')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
             </div>
-
             <div class="text-center mt-4 mb-4">
-                <input class="btn btn-success" type="submit" value="Wyślij">
+                <button class="btn btn-success" type="submit">Wyślij</button>
             </div>
         </form>
     </div>

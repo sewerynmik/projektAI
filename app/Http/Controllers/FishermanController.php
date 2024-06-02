@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreFishermanRequest;
+use App\Http\Requests\StoreUserRequest;
 use App\Models\Fisherman;
 use App\Models\Haul;
+use App\Models\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class FishermanController extends Controller
 {
@@ -28,23 +31,33 @@ class FishermanController extends Controller
         return view('fisherman.create');
     }
 
-    public function store(StoreFishermanRequest $request, Fisherman $fisherman)
+    public function store(StoreUserRequest $request)
     {
-        if (!Gate::allows('create', $fisherman)) {
-            return redirect()->back();
-        }
-        $input = $request->all();
+        $fisherman = Fisherman::create([
+            'name' => $request->fisherman_name,
+            'surname' => $request->surname,
+            'age' => $request->age,
+            'phone_number' => $request->phone_number,
+            'pesel' => $request->pesel,
+        ]);
 
-        Fisherman::create($input);
+        $user = User::create([
+            'name' => $request->user_name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role' => 'u',
+            'fisherman_id' => $fisherman->id,
+        ]);
 
-        return redirect()->route('fisherman.index')->with('success', 'Ryba została pomyślnie dodana.');
+
+        $user->fisherman()->associate($fisherman);
+        $user->save();
+
+        return redirect()->route('fisherman.index');
     }
 
     public function edit(Fisherman $fisherman)
     {
-        if (!Gate::allows('update', $fisherman)) {
-            return redirect()->back();
-        }
         return view('fisherman.edit', ['fisherman' => $fisherman, 'hauls' => Haul::all()]);
     }
 

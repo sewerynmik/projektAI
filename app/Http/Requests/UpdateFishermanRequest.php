@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateFishermanRequsetRequest extends FormRequest
+class UpdateFishermanRequest extends FormRequest
 {
     public function rules(): array
     {
@@ -12,8 +12,8 @@ class UpdateFishermanRequsetRequest extends FormRequest
             'name' => 'required|string',
             'surname' => 'required|string',
             'age' => 'required|numeric|digits_between:1,3',
-            'phone_number' => 'required|numeric|digits:9|unique:fishermen,phone_number,' . $this->fisherman->id,
-            'pesel' => 'required|numeric|digits:11|unique:fishermen,pesel'.$this->fisherman->id,
+            'phone_number' => 'required|numeric|digits:9|unique:fishermen,id,' . $this->id,
+            'pesel' => 'required|numeric|digits:11|unique:fishermen,id,'.$this->id,
         ];
     }
 

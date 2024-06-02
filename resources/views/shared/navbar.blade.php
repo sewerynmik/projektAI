@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Third navbar example">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Rybka</a>
+        <a class="navbar-brand" href="{{ url('/') }}">Rybka</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03"
                 aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -31,12 +31,12 @@
             </ul>
             @if(Auth::check())
 
-                <div class="btn-group ms-auto">
+                <div class="btn-group ms-auto {{ Request::is('haul') ? 'justify-content-start' : 'justify-content-end' }}">
                     <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown"
                             aria-expanded="false">
                         Witaj {{ auth()->user()->fisherman->name }}
                     </button>
-                    <ul class="dropdown-menu dropdown-menu-end">
+                    <ul class="dropdown-menu  dropdown-menu-sm-end">
                         <li><a class="dropdown-item" href="{{ url('profile') }}">Profil</a></li>
                         <li>
                             <hr class="dropdown-divider">

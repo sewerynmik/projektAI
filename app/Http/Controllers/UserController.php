@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateFishermanRequest;
+use App\Http\Requests\UpdateUserRequest;
+use App\Models\Fish;
 use App\Models\Fisherman;
 use App\Models\Haul;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -39,10 +42,15 @@ class UserController extends Controller
         return view('user.editPass', compact('user'));
     }
 
-    public function updatePass()
+    public function updatePass(UpdateUserRequest $request, User $user)
     {
+        $user->update([
+            'password' => Hash::make($request->newpass),
+        ]);
 
+        return redirect()->route('users.index')->with('success', 'Hasło zostało pomyślnie zaktualizowane!');
     }
+
 
     public function editName()
     {
@@ -51,32 +59,39 @@ class UserController extends Controller
         return view('user.editName', compact('user'));
     }
 
-    public function updateName()
+    public function updateName(UpdateUserRequest $request, User $user)
     {
+        $input = $request->all();
+        $user->update($input);
 
+        return redirect()->route('users.index');
     }
 
     public function editEmail()
     {
         $user = Auth::user();
 
-        return view('user.edit', compact('user'));
+        return view('user.editEmail', compact('user'));
     }
 
-    public function updateEmail()
+    public function updateEmail(UpdateUserRequest $request, User $user)
     {
-
+        $input = $request->all();
+        $user->update($input);
+        return redirect()->route('users.index');
     }
 
     public function edit()
     {
         $user = Auth::user();
 
-        return view('user.editEmail', compact('user'));
+        return view('user.edit', compact('user'));
     }
 
-    public function update()
+    public function update(UpdateFishermanRequest $request, Fisherman $fisherman)
     {
-
+        $input = $request->all();
+        $fisherman->update($input);
+        return redirect()->route('users.index');
     }
 }

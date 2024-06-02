@@ -13,9 +13,9 @@
             @csrf
             @method('POST')
             <div class="form-group mb-2">
-                <label for="name" class="form-label">Imie</label>
-                <input id="name" name="name" type="text"
-                       class="form-control @if ($errors->first('name')) is-invalid @endif">
+                <label for="user_name" class="form-label">Imie</label>
+                <input id="user_name" name="user_name" type="text"
+                       class="form-control @if ($errors->first('user_name')) is-invalid @endif">
                 <div class="invalid-feedback">Nieprawidłowe imie!</div>
             </div>
             <div class="form-group mb-2">
@@ -47,10 +47,29 @@
                 <input id="address" name="address" type="text"
                        class="form-control @if ($errors->first('address')) is-invalid @endif">
                 <div class="invalid-feedback">Nieprawidłowy adres!</div>
+            </div>
+            <div class="form-group mb-2">
+                <label for="fisherman_name" class="form-label">Nazwa konta</label>
+                <input id="fisherman_name" name="fisherman_name" type="text"
+                       class="form-control @if ($errors->first('fisherman_name')) is-invalid @endif">
+                <div class="invalid-feedback">Nieprawidłowa nazwa konta!</div>
+            </div>
+            <div class="form-group mb-2">
+                <label for="email" class="form-label">Email</label>
+                <input id="email" name="email" type="text"
+                       class="form-control @if ($errors->first('email')) is-invalid @endif">
+                <div class="invalid-feedback">Nieprawidłowy email!</div>
+            </div>
+            <div class="form-group mb-2">
+                <label for="password" class="form-label">Hasło</label>
+                <input id="password" name="password" type="text"
+                       class="form-control @if ($errors->first('password')) is-invalid @endif">
+                <div class="invalid-feedback">Nieprawidłowe hasło!</div>
+            </div>
 
-                <div class="text-center mt-4 mb-4">
-                    <input class="btn btn-success" type="submit" value="Wyślij">
-                </div>
+
+            <div class="text-center mt-4 mb-4">
+                <input class="btn btn-success" type="submit" value="Wyślij">
             </div>
         </form>
     </div>

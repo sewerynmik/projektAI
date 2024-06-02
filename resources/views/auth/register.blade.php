@@ -43,10 +43,10 @@
                 <div class="invalid-feedback">Nieprawidłowyp pesel!</div>
             </div>
             <div class="form-group mb-2">
-                <label for="user_name" class="form-label">login</label>
+                <label for="user_name" class="form-label">Nazwa konta</label>
                 <input id="user_name" name="user_name" type="text"
                        class="form-control @if ($errors->first('user_name')) is-invalid @endif" value="{{ old('user_name') }}">
-                <div class="invalid-feedback">Nieprawidłowy login!</div>
+                <div class="invalid-feedback">Nieprawidłowa nazwa konta!</div>
             </div>
             <div class="form-group mb-2">
                 <label for="email" class="form-label">Email</label>

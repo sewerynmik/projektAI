@@ -5,7 +5,7 @@
 <body>
 @include('shared.navbar')
 <div class="row mt-4 mb-4 text-center">
-    <h1>Edytuj naze konta</h1>
+    <h1>Edytuj email</h1>
 </div>
 
 <div class="row d-flex justify-content-center">

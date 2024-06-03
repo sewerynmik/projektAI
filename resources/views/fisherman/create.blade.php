@@ -18,7 +18,7 @@
                        class="form-control @if ($errors->has('fisherman_name')) is-invalid @endif"
                        value="{{ old('fisherman_name') }}">
                 @if ($errors->has('fisherman_name'))
-                    <div class="invalid-feedback">{{ $errors->first('fisherman_name') }}</div>
+                    <div class="invalid-feedback">Nieprawidłowe imie!</div>
                 @endif
             </div>
             <div class="form-group mb-2">
@@ -27,7 +27,7 @@
                        class="form-control @if ($errors->has('surname')) is-invalid @endif"
                        value="{{ old('surname') }}">
                 @if ($errors->has('surname'))
-                    <div class="invalid-feedback">{{ $errors->first('surname') }}</div>
+                    <div class="invalid-feedback">Nieprawidłowe nazwisko!</div>
                 @endif
             </div>
             <div class="form-group mb-2">
@@ -36,7 +36,7 @@
                        class="form-control @if ($errors->has('age')) is-invalid @endif"
                        value="{{ old('age') }}">
                 @if ($errors->has('age'))
-                    <div class="invalid-feedback">{{ $errors->first('age') }}</div>
+                    <div class="invalid-feedback">Nieprawidłowy wiek!</div>
                 @endif
             </div>
             <div class="form-group mb-2">
@@ -45,7 +45,7 @@
                        class="form-control @if ($errors->has('phone_number')) is-invalid @endif"
                        value="{{ old('phone_number') }}">
                 @if ($errors->has('phone_number'))
-                    <div class="invalid-feedback">{{ $errors->first('phone_number') }}</div>
+                    <div class="invalid-feedback">Nieprawidłowy numer telefonu!</div>
                 @endif
             </div>
             <div class="form-group mb-2">
@@ -54,7 +54,7 @@
                        class="form-control @if ($errors->has('pesel')) is-invalid @endif"
                        value="{{ old('pesel') }}">
                 @if ($errors->has('pesel'))
-                    <div class="invalid-feedback">{{ $errors->first('pesel') }}</div>
+                    <div class="invalid-feedback">Nieprawidłowy pesel!</div>
                 @endif
             </div>
             <div class="form-group mb-2">
@@ -63,7 +63,7 @@
                        class="form-control @if ($errors->has('address')) is-invalid @endif"
                        value="{{ old('address') }}">
                 @if ($errors->has('address'))
-                    <div class="invalid-feedback">{{ $errors->first('address') }}</div>
+                    <div class="invalid-feedback">Nieprawidłowy adres!</div>
                 @endif
             </div>
             <div class="form-group mb-2">
@@ -72,7 +72,7 @@
                        class="form-control @if ($errors->has('user_name')) is-invalid @endif"
                        value="{{ old('user_name') }}">
                 @if ($errors->has('user_name'))
-                    <div class="invalid-feedback">{{ $errors->first('user_name') }}</div>
+                    <div class="invalid-feedback">Nieprawidłowe nazwa konta!</div>
                 @endif
             </div>
             <div class="form-group mb-2">
@@ -81,7 +81,7 @@
                        class="form-control @if ($errors->has('email')) is-invalid @endif"
                        value="{{ old('email') }}">
                 @if ($errors->has('email'))
-                    <div class="invalid-feedback">{{ $errors->first('email') }}</div>
+                    <div class="invalid-feedback">Nieprawidłowy email!</div>
                 @endif
             </div>
             <div class="form-group mb-2">
@@ -89,7 +89,7 @@
                 <input id="password" name="password" type="password"
                        class="form-control @if ($errors->has('password')) is-invalid @endif">
                 @if ($errors->has('password'))
-                    <div class="invalid-feedback">{{ $errors->first('password') }}</div>
+                    <div class="invalid-feedback">Nieprawidłowe hasło!</div>
                 @endif
             </div>
 

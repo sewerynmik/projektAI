@@ -13,7 +13,7 @@ class StoreFishRequest extends FormRequest
             'name' => 'required|string|max:255|unique:fish,name',
             'species' => 'required|string|max:255',
             'description' => 'required|string',
-            'image' => 'nullable|string',
+            'image' => 'required|string',
         ];
     }
 

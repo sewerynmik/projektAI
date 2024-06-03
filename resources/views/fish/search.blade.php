@@ -124,13 +124,4 @@
     </div>
 </div>
 
-@if(session('error'))
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            alert('{{ session('error') }}');
-        });
-    </script>
-@endif
-
-
 @include('shared.footer')

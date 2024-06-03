@@ -55,7 +55,7 @@ class FisheryController extends Controller
 
         $input = $request->all();
         $fishery->update($input);
-        return redirect()->route('fishery.index');
+        return redirect()->route('fishery.index')->with('success', 'Dane łowiska zostały zaktualizowane.');
     }
 
     public function destroy(Fishery $fishery)
@@ -69,7 +69,7 @@ class FisheryController extends Controller
         }
 
         $fishery->delete();
-        return redirect()->route('fishery.index');
+        return redirect()->route('fishery.index')->with('success', 'Usunięto łowsiko');
     }
 
     public function search(Request $request)

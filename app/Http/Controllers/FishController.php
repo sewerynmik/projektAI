@@ -79,7 +79,7 @@ class FishController extends Controller
         }
         $input = $request->all();
         $fish->update($input);
-        return redirect()->route('fish.index');
+        return redirect()->route('fish.index')->with('success', 'Dane ryby zostały zaktualizowane');
     }
 
     public function destroy(Fish $fish)
@@ -92,7 +92,7 @@ class FishController extends Controller
         }
 
         $fish->delete();
-        return redirect()->route('fish.index');
+        return redirect()->route('fish.index')->with('success', 'Usunięto rybę.');
     }
 
     public function store(StoreFishRequest $request, Fish $fish)
@@ -105,5 +105,18 @@ class FishController extends Controller
         Fish::create($input);
 
         return redirect()->route('fish.index')->with('success', 'Ryba została pomyślnie dodana.');
+    }
+
+    public function uploadImage(Request $request)
+    {
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $originalName = $request->file('image')->getClientOriginalName();
+
+        $request->file('image')->storeAs('public/img', $originalName);
+
+        return back()->with('success','Zdjęcie zostało pomyślnie dodane.');
     }
 }

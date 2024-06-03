@@ -10,14 +10,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
 Route::resource('fish', FishController::class)->except('index', 'show', 'search')->middleware('auth');
+
 
 Route::controller(FishController::class)->group(function () {
     Route::get('/fish', 'index')->name('fish.index');
     Route::get('/fish/search', 'search')->name('fish.search');
     Route::get('/fish/{fish}', 'show')->name('fish.show');
+    Route::post('/upload/image', 'uploadImage')->name('upload.image')->middleware('auth');
 });
 
 Route::controller(FisheryController::class)->group(function () {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreFishermanRequest;
 use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateFishermanRequest;
 use App\Models\Fisherman;
 use App\Models\Haul;
 use App\Models\User;
@@ -61,7 +62,7 @@ class FishermanController extends Controller
         return view('fisherman.edit', ['fisherman' => $fisherman, 'hauls' => Haul::all()]);
     }
 
-    public function update(Request $request, Fisherman $fisherman)
+    public function update(UpdateFishermanRequest $request, Fisherman $fisherman)
     {
         if (!Gate::allows('update', $fisherman)) {
             return redirect()->back();
@@ -69,7 +70,7 @@ class FishermanController extends Controller
 
         $input = $request->all();
         $fisherman->update($input);
-        return redirect()->route('fisherman.index');
+        return redirect()->route('fisherman.index')->with('success', 'Zaktualizowano dane rybaka.');
     }
 
     public function destroy(Fisherman $fisherman)
@@ -83,6 +84,7 @@ class FishermanController extends Controller
         }
 
         $fisherman->delete();
-        return redirect()->route('fisherman.index');
+        return redirect()->route('fisherman.index')->with('success', 'Usunięto rybaka.');
     }
+
 }

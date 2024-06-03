@@ -12,8 +12,8 @@ class UpdateFishermanRequest extends FormRequest
             'name' => 'required|string',
             'surname' => 'required|string',
             'age' => 'required|numeric|digits_between:1,3',
-            'phone_number' => 'required|numeric|digits:9|unique:fishermen,id,' . $this->id,
-            'pesel' => 'required|numeric|digits:11|unique:fishermen,id,'.$this->id,
+            'phone_number' => 'required|numeric|digits:9|unique:fishermen,phone_number,' . $this->fisherman->id,
+            'pesel' => 'required|numeric|digits:11|unique:fishermen,pesel,'.$this->fisherman->id,
         ];
     }
 

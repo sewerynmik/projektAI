@@ -78,7 +78,7 @@ class HaulController extends Controller
         }
         $input = $request->all();
         $haul->update($input);
-        return redirect()->route('haul.index');
+        return redirect()->route('haul.index')->with('success', 'Dane połowu zostały zaktualizowane.');
     }
 
     public function destroy(Haul $haul){
@@ -87,6 +87,6 @@ class HaulController extends Controller
         }
 
         $haul->delete();
-        return redirect()->route('haul.index');
+        return redirect()->route('haul.index')->with('success', 'Usunięto połów');
     }
 }

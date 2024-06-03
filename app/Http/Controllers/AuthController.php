@@ -14,7 +14,7 @@ class AuthController extends Controller
     public function login()
     {
         if (Auth::check()) {
-            return redirect()->route('fish.index');
+            return redirect()->route('home');
         }
         return view('auth.login');
     }
@@ -34,7 +34,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->route('fish.index');
+            return redirect()->route('home');
         }
 
         return back()->withErrors([
@@ -47,7 +47,7 @@ class AuthController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('fish.index');
+        return redirect()->route('home');
     }
 
     public function register()
@@ -79,6 +79,6 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('fish.index');
+        return redirect()->route('home');
     }
 }

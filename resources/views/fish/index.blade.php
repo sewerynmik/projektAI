@@ -11,7 +11,12 @@
         </div>
         @can('is-admin')
             <div class="col-md-6 d-flex justify-content-end align-items-center">
-                <a href="{{ route('fish.create') }}" class="btn btn-dark">Dodaj</a>
+                <form method="POST" action="{{ route('upload.image') }}" enctype="multipart/form-data" id="imageForm">
+                    @csrf
+                    <input type="file" name="image" class="d-none" id="imageInput" aria-describedby="imageButton">
+                    <button type="button" class="btn btn-dark" id="imageButton">Dodaj zdjęcie</button>
+                </form>
+                <a href="{{ route('fish.create') }}" class="btn btn-dark mx-2">Dodaj</a>
             </div>
         @endcan
     </div>
@@ -38,7 +43,8 @@
                         <label class="form-check-label" for="species">Gatunek</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="search_by" id="description" value="description">
+                        <input class="form-check-input" type="radio" name="search_by" id="description"
+                               value="description">
                         <label class="form-check-label" for="description">Opis</label>
                     </div>
                     <div class="form-check form-check-inline">
@@ -124,13 +130,14 @@
     </div>
 </div>
 
-@if(session('error'))
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            alert('{{ session('error') }}');
-        });
-    </script>
-@endif
+<script>
+    document.getElementById('imageButton').addEventListener('click', function () {
+        document.getElementById('imageInput').click();
+    });
 
+    document.getElementById('imageInput').addEventListener('change', function () {
+        document.getElementById('imageForm').submit();
+    });
+</script>
 
 @include('shared.footer')

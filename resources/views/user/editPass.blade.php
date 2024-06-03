@@ -16,19 +16,19 @@
             <div class="form-group mb-2">
                 <label for="oldpass" class="form-label">Stare hasło</label>
                 <input id="oldpass" name="oldpass" type="password"
-                       class="form-control @if ($errors->first('password')) is-invalid @endif">
+                       class="form-control @if ($errors->first('oldpass')) is-invalid @endif">
                 <div class="invalid-feedback">Nieprawidłowe hasło!</div>
             </div>
             <div class="form-group mb-2">
                 <label for="newpass" class="form-label">Nowe hasło</label>
                 <input id="newpass" name="newpass" type="password"
-                       class="form-control @if ($errors->first('password')) is-invalid @endif">
+                       class="form-control @if ($errors->first('newpass')) is-invalid @endif">
                 <div class="invalid-feedback">Nieprawidłowe hasło!</div>
             </div>
             <div class="form-group mb-2">
                 <label for="newpass2" class="form-label">Powtórz nowe hasło</label>
                 <input id="newpass2" name="newpass2" type="password"
-                       class="form-control @if ($errors->first('password')) is-invalid @endif">
+                       class="form-control @if ($errors->first('newpass2')) is-invalid @endif">
                 <div class="invalid-feedback">Nieprawidłowe hasło!</div>
             </div>
 
@@ -39,4 +39,5 @@
     </div>
 </div>
 
-</body>
+@include('shared.footer')
+

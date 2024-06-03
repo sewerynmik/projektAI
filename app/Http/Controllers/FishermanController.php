@@ -83,6 +83,9 @@ class FishermanController extends Controller
             return back()->with('error', 'Nie można usunąć rybaka, ponieważ istnieją powiązane rekordy w innych tabelach.');
         }
 
+        $user = $fisherman->users;
+        $user->delete();
+
         $fisherman->delete();
         return redirect()->route('fisherman.index')->with('success', 'Usunięto rybaka.');
     }

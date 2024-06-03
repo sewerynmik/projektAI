@@ -20,7 +20,7 @@
             </div>
         @endcan
     </div>
-    <div class="table-responsive-sm">
+    <div class="table-responsive-md">
         <table class="table table-hover table-striped">
             <thead>
             <tr>
